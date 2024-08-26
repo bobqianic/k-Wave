@@ -13,6 +13,19 @@ sudo curl -L https://raw.githubusercontent.com/bobqianic/k-Wave/main/install_lib
 ```
 ### 2. Install k-Wave
 Download the latest source code from this repo.
+```bash
+wget https://github.com/bobqianic/k-Wave/archive/refs/heads/main.zip
+```
+
+Unzip the souce code.
+```bash
+unzip ./main.zip
+```
+
+Change current directory to `kspaceFirstOrder-CUDA`
+```bash
+cd ./k-Wave-main/kspaceFirstOrder-CUDA
+```
 
 Modify the `CUDA_DIR`, `HDF5_DIR`, `ZLIB_DIR`, and `SZIP_DIR` in the `Makefile` to point to your library installation locations.
 ```Makefile
