@@ -44,10 +44,10 @@ the code can be compiled with the support for the OpenMP 4.0 library, however,
 only on Linux systems.
 
 There are a variety of different C++ compilers that can be used to compile the
-source codes. The minimum requirements are the GNU C++ compiler 6.0 or the
-Intel C++ compiler 2018. However, we recommend using either the GNU C++
-compiler version 11.4, the Intel C++ compiler version 2019, or the Visual Studio
-C++ 2022 compiler. Please note that Visual Studio compilers do not support the
+source codes. The **minimum** requirements are the `GNU C++ compiler 6.0` or the
+`Intel C++ compiler 2018`. However, we recommend using either the `GNU C++
+compiler version 11.4`, the `Intel C++ compiler version 2019`, or the `Visual Studio
+C++ 2022 compiler`. Please note that Visual Studio compilers do not support the
 OpenMP 4.0 standard and the multithreading has to be disabled. Also be aware
 that the compiler version may be further limited by the CUDA library.
 The codes can be compiled on 64-bit Linux and Windows. 32-bit systems are not
@@ -68,7 +68,7 @@ free for non-commercial and open-source use.
 
 The CUDA library can be downloaded from the
 (https://developer.nvidia.com/cuda-toolkit-archive).
-The only supported version are 9.0 - 12.1, however, the code is supposed to
+The only supported version are `9.0 - 12.1`, however, the code is supposed to
 work with upcoming CUDA 13.0, but we cannot guarantee that.
 
 
@@ -76,10 +76,8 @@ work with upcoming CUDA 13.0, but we cannot guarantee that.
 
  1. Download the 64-bit HDF5 library
     https://www.hdfgroup.org/downloads/hdf5/source-code/). Please keep in mind
-    that versions 1.10.x may not be fully compatible with older versions of
-    MATLAB, especially when compression is enabled. In such a case, please
-    download version 1.8.x
-    https://portal.hdfgroup.org/display/support/HDF5+1.8.21.
+    that versions 1.14.x may not be fully compatible with older versions of
+    **MATLAB**, especially when compression is enabled.
 
  2. Configure the HDF5 distribution. Enable the high-level library and specify
     an installation folder by typing:
@@ -91,6 +89,42 @@ work with upcoming CUDA 13.0, but we cannot guarantee that.
     make -j
     ```
  4. Install the HDF5 library by typing:
+    ```bash
+    make install
+    ```
+
+### The ZLIB library installation procedure
+
+ 1. Download the 64-bit ZLIB library
+    (https://www.zlib.net).
+
+ 2. Configure the ZLIB distribution. Specify an installation folder by typing:
+    ```bash
+    ./configure --prefix=folder_to_install
+    ```
+ 3. Make the ZLIB library by typing:
+    ```bash
+    make -j
+    ```
+ 4. Install the ZLIB library by typing:
+    ```bash
+    make install
+    ```
+
+### The SZIP library installation procedure
+
+ 1. Download the 64-bit SZIP library
+    (https://docs.hdfgroup.org/archive/support/doc_resource/SZIP/index.html).
+
+ 2. Configure the SZIP distribution. Specify an installation folder by typing:
+    ```bash
+    ./configure --prefix=folder_to_install
+    ```
+ 3. Make the SZIP library by typing:
+    ```bash
+    make -j
+    ```
+ 4. Install the SZIP library by typing:
     ```bash
     make install
     ```
