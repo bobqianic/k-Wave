@@ -24,7 +24,7 @@ download_and_extract() {
 # Install HDF5 Library
 echo "Installing HDF5 Library..."
 HDF5_URL="https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.3/hdf5-1.14.4-3.tar.gz"
-mkdir -p ./hdf5_src && cd ./hdf5_src
+mkdir -p ./hdf5_src && cd ./hdf5_src/hdf5-1.14.4-3
 download_and_extract "$HDF5_URL" .
 ./configure --enable-hl --enable-static --enable-shared --prefix="$HDF5_INSTALL_DIR"
 make -j
