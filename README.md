@@ -1,4 +1,5 @@
 # k-Wave
+This version of the k-Wave Toolbox has been modified by bobqianic. The modifications include adding support for the latest hardware and fixing bugs. These modifications are also distributed under the terms of the GNU Lesser General Public License as specified above.
 
 ## Install Guide (Linux)
 ### 1. Install libraries
