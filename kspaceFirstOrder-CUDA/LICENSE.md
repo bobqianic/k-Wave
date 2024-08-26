@@ -28,6 +28,9 @@ PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License along
 with k-Wave. If not, see (http://www.gnu.org/licenses/).
 
+## Modifications
+
+This version of the k-Wave Toolbox has been modified by bobqianic. The modifications include adding support for the latest hardware and fixing bugs. These modifications are also distributed under the terms of the GNU Lesser General Public License as specified above. 
 
 ## Citing the k-Wave Toolbox
 
@@ -48,3 +51,4 @@ ultrasound," Int. J. High Perform. Comput., vol. 30, no. 2, pp. 137-155, 2016._
 along with any other relevant publications. The first paper describes the
 nonlinear ultrasound model and the C++ code, and the second paper provides more
 details of the C++ implementation.
+
