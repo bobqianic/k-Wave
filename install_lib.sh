@@ -95,7 +95,7 @@ echo "Installing HDF5 Library..."
 HDF5_URL="https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.3/hdf5-1.14.4-3.tar.gz"
 mkdir -p ./hdf5_src && cd ./hdf5_src
 download_and_extract "$HDF5_URL" .
-compile_and_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix=\"$HDF5_INSTALL_DIR\""
+compile_and_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix="$HDF5_INSTALL_DIR""
 cd ..
 
 # Install ZLIB Library
@@ -103,7 +103,7 @@ echo "Installing ZLIB Library..."
 ZLIB_URL="https://www.zlib.net/zlib-1.3.1.tar.gz"
 mkdir -p ./zlib_src && cd ./zlib_src
 download_and_extract "$ZLIB_URL" .
-compile_and_install "./configure --prefix=\"$ZLIB_INSTALL_DIR\""
+compile_and_install "./configure --prefix="$ZLIB_INSTALL_DIR""
 cd ..
 
 # Install SZIP Library
@@ -111,7 +111,7 @@ echo "Installing SZIP Library..."
 SZIP_URL="https://docs.hdfgroup.org/archive/support/ftp/lib-external/szip/2.1.1/src/szip-2.1.1.tar.gz"
 mkdir -p ./szip_src && cd ./szip_src
 download_and_extract "$SZIP_URL" .
-compile_and_install "./configure --prefix=\"$SZIP_INSTALL_DIR\""
+compile_and_install "./configure --prefix="$SZIP_INSTALL_DIR""
 cd ..
 
 echo "Installation completed successfully!"
