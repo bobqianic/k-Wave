@@ -68,7 +68,7 @@ free for non-commercial and open-source use.
 
 The CUDA library can be downloaded from the
 (https://developer.nvidia.com/cuda-toolkit-archive).
-The only supported version are `9.0 - 12.1`, however, the code is supposed to
+The only supported version are `9.0 - 12.6`, however, the code is supposed to
 work with upcoming CUDA 13.0, but we cannot guarantee that.
 
 
