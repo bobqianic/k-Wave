@@ -64,3 +64,6 @@ For example, if your CUDA Toolkit version is `12.6.X`:
 ```
 >
 3. If you encounter error `LNK1811: cannot open input file 'libszip.lib'/'libhdf5.lib'...`, please remove them from `Properties->Linker->Input->Additional Dependencies`.
+
+## C++ vs MATLAB performance
+![image](https://github.com/bobqianic/k-Wave/blob/main/Performance.png?raw=true)
