@@ -54,8 +54,8 @@ download_and_extract() {
     rm "$filename"
 }
 
-# Function to compile and install libraries
-compile_and_install() {
+# Function to compile libraries without installing
+compile_without_install() {
     configure_command=$1
     make_command="make -j$(nproc)"
     
@@ -72,7 +72,20 @@ compile_and_install() {
         echo "Error: Compilation failed."
         exit 1
     fi
-    
+}
+
+# Function to run tests before installation
+run_tests() {
+    echo "Running tests..."
+    make check
+    if [ $? -ne 0 ]; then
+        echo "Error: Tests failed."
+        exit 1
+    fi
+}
+
+# Function to install libraries after successful tests
+install_after_tests() {
     echo "Installing..."
     make install
     if [ $? -ne 0 ]; then
@@ -82,7 +95,7 @@ compile_and_install() {
 }
 
 # Check for necessary tools
-for tool in wget tar make gcc; do
+for tool in wget tar gzip make gcc; do
     if ! command_exists "$tool"; then
         echo "$tool is not installed. Installing dependencies..."
         install_dependencies
@@ -95,7 +108,9 @@ echo "Installing HDF5 Library..."
 HDF5_URL="https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.3/hdf5-1.14.4-3.tar.gz"
 mkdir -p ./hdf5_src && cd ./hdf5_src
 download_and_extract "$HDF5_URL" .
-compile_and_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix="$HDF5_INSTALL_DIR""
+compile_without_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix=$HDF5_INSTALL_DIR"
+run_tests  # Run tests before installing HDF5
+install_after_tests  # Install only if tests pass
 cd ..
 
 # Install ZLIB Library
@@ -103,7 +118,8 @@ echo "Installing ZLIB Library..."
 ZLIB_URL="https://www.zlib.net/zlib-1.3.1.tar.gz"
 mkdir -p ./zlib_src && cd ./zlib_src
 download_and_extract "$ZLIB_URL" .
-compile_and_install "./configure --prefix="$ZLIB_INSTALL_DIR""
+compile_without_install "./configure --prefix=$ZLIB_INSTALL_DIR"
+install_after_tests  # ZLIB doesn't need make check, so install directly
 cd ..
 
 # Install SZIP Library
@@ -111,8 +127,8 @@ echo "Installing SZIP Library..."
 SZIP_URL="https://docs.hdfgroup.org/archive/support/ftp/lib-external/szip/2.1.1/src/szip-2.1.1.tar.gz"
 mkdir -p ./szip_src && cd ./szip_src
 download_and_extract "$SZIP_URL" .
-compile_and_install "./configure --prefix="$SZIP_INSTALL_DIR""
+compile_without_install "./configure --prefix=$SZIP_INSTALL_DIR"
+install_after_tests  # SZIP doesn't need make check, so install directly
 cd ..
 
 echo "Installation completed successfully!"
-
