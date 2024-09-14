@@ -103,16 +103,6 @@ for tool in wget tar gzip make gcc; do
     fi
 done
 
-# Install HDF5 Library
-echo "Installing HDF5 Library..."
-HDF5_URL="https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.3/hdf5-1.14.4-3.tar.gz"
-mkdir -p ./hdf5_src && cd ./hdf5_src
-download_and_extract "$HDF5_URL" .
-compile_without_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix=$HDF5_INSTALL_DIR"
-run_tests  # Run tests before installing HDF5
-install_after_tests  # Install only if tests pass
-cd ..
-
 # Install ZLIB Library
 echo "Installing ZLIB Library..."
 ZLIB_URL="https://www.zlib.net/zlib-1.3.1.tar.gz"
@@ -129,6 +119,16 @@ mkdir -p ./szip_src && cd ./szip_src
 download_and_extract "$SZIP_URL" .
 compile_without_install "./configure --prefix=$SZIP_INSTALL_DIR"
 install_after_tests  # SZIP doesn't need make check, so install directly
+cd ..
+
+# Install HDF5 Library
+echo "Installing HDF5 Library..."
+HDF5_URL="https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.3/hdf5-1.14.4-3.tar.gz"
+mkdir -p ./hdf5_src && cd ./hdf5_src
+download_and_extract "$HDF5_URL" .
+compile_without_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix=$HDF5_INSTALL_DIR"
+run_tests  # Run tests before installing HDF5
+install_after_tests  # Install only if tests pass
 cd ..
 
 echo "Installation completed successfully!"
