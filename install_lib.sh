@@ -126,7 +126,7 @@ echo "Installing HDF5 Library..."
 HDF5_URL="https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.3/hdf5-1.14.4-3.tar.gz"
 mkdir -p ./hdf5_src && cd ./hdf5_src
 download_and_extract "$HDF5_URL" .
-compile_without_install "./hdf5-1.14.4-3/configure --enable-hl --enable-static --enable-shared --prefix=$HDF5_INSTALL_DIR"
+compile_without_install "./hdf5-1.14.4-3/configure -with-zlib=$ZLIB_INSTALL_DIR --enable-hl --enable-static --enable-shared --prefix=$HDF5_INSTALL_DIR"
 run_tests  # Run tests before installing HDF5
 install_after_tests  # Install only if tests pass
 cd ..
