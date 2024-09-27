@@ -4,7 +4,7 @@
 cd /root
 
 # Execute the script from the k-Wave repository
-sudo curl -L https://raw.githubusercontent.com/bobqianic/k-Wave/main/install_lib_china.sh | bash
+curl -L https://raw.githubusercontent.com/bobqianic/k-Wave/main/install_lib_china.sh | bash
 
 # Download the main zip file from the k-Wave repository
 wget https://github.com/bobqianic/k-Wave/archive/refs/heads/main.zip
