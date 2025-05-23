@@ -88,10 +88,10 @@ LINKING = SEMI
 
 # Set up paths: If using modules, the paths are set up automatically,
 #               otherwise, set paths manually
-CUDA_DIR = "/usr/local/cuda-12.1"
-HDF5_DIR = "/usr/local/hdf5"
-ZLIB_DIR = "/usr/local/zlib"
-SZIP_DIR = "/usr/local/szip"
+CUDA_DIR = $(CUDA_HOME)
+HDF5_DIR = $(EBROOTHDF5)
+ZLIB_DIR = $(EBROOTZLIB)
+SZIP_DIR = $(EBROOTSZIP)
 
 # Select CPU architecture (what instruction set to be used).
 # The native architecture will compile and optimize the code for the underlying
@@ -144,7 +144,8 @@ else ifeq ($(LINKING), SEMI)
            $(ZLIB_DIR)/lib/libz.a       \
            $(SZIP_DIR)/lib/libsz.a      \
            -lcufft                      \
-           -ldl
+           -ldl                         \
+           -lmpi
 endif
 
 ############################## NVCC + GNU g++ ##################################
@@ -314,17 +315,17 @@ all: $(TARGET)
 
 # Link target
 $(TARGET): $(DEPENDENCIES)
-	$(CXX) $(LDFLAGS) $(DEPENDENCIES) $(LDLIBS) -o $@
+  $(CXX) $(LDFLAGS) $(DEPENDENCIES) $(LDLIBS) -o $@
 
 # Compile CPU units
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+  $(CXX) $(CXXFLAGS) -o $@ -c $<
 
 # Compile CUDA units
 %.o: %.cu
-	$(CXX) $(CXXFLAGS) $(CUDA_ARCH) -o $@ -c $<
+  $(CXX) $(CXXFLAGS) $(CUDA_ARCH) -o $@ -c $<
 
 # Clean repository
 .PHONY: clean
 clean:
-	rm -f $(DEPENDENCIES) $(TARGET)
+  rm -f $(DEPENDENCIES) $(TARGET)
