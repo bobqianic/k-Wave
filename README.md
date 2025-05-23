@@ -13,7 +13,7 @@ Unzip the souce code.
 unzip ./k-Wave-EasyBuild-Imperial.zip
 ```
 
-Run qsub to submit amd compile k-Wave.
+Run qsub to submit and compile k-Wave.
 ```bash
 qsub ./k-Wave-EasyBuild-Imperial/HPC_example/compile.sh
 ```
